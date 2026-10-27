@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: waisi-realwear-studio-v18
-    env: node
-    buildCommand: npm install
-    startCommand: npm start
