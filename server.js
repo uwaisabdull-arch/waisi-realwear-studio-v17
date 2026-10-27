@@ -1,0 +1,10 @@
+import express from 'express';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const app=express();
+const dir=path.dirname(fileURLToPath(import.meta.url));
+app.disable('x-powered-by');
+app.get('/api/status',(_req,res)=>res.json({ok:true,version:'18.0.0'}));
+app.use(express.static(path.join(dir,'public')));
+app.get('*',(_req,res)=>res.sendFile(path.join(dir,'public','index.html')));
+app.listen(process.env.PORT||3000,'0.0.0.0',()=>console.log('WAISI V18 running'));
